@@ -1,3 +1,6 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const images = [
   {
     preview:
@@ -66,12 +69,11 @@ const images = [
 
 const galleryContainer = document.querySelector('.gallery');
 
-const createGalleryItemWithTemplate = ({ preview, original, description }) => `
-  <li class="gallery-item">
-    <a class="gallery-link" href="${original}">
-      <img class="gallery-image" src="${preview}" alt="${description}" data-source="${original}">
-    </a>
-  </li>
+const createGalleryItemWithTemplate = image => `<li class="gallery-item">
+  <a class="gallery-link" href="${image.original}">
+    <img class="gallery-image" src="${image.preview}" alt="${image.description}" />
+  </a>
+</li>
 `;
 
 const appendGalleryItems = () => {
@@ -80,6 +82,11 @@ const appendGalleryItems = () => {
 };
 
 appendGalleryItems();
+
+let gallery = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 // =========== Modal window ===========
 
