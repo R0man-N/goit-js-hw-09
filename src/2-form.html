@@ -4,19 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <p><a href="index.html">Go back</a></p>
     <form class="feedback-form" autocomplete="off">
-      <label>
+      <label class="label-field">
         Email
-        <input type="email" name="email" autofocus />
+        <input
+          class="input-field-mail"
+          type="email"
+          name="email"
+          placeholder="Type area"
+          autofocus
+        />
       </label>
-      <label>
+      <label class="label-field">
         Message
-        <textarea name="message" rows="8"></textarea>
+        <textarea
+          class="textarea-field-message"
+          name="message"
+          type="textarea"
+          rows="8"
+        ></textarea>
       </label>
-      <button type="submit">Submit</button>
+      <button class="form-btn" type="submit">Submit</button>
     </form>
     <script type="module" src="./js/2-form.js"></script>
   </body>
