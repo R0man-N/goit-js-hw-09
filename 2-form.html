@@ -4,21 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    
     <script type="module" crossorigin src="/goit-js-hw-09/commonHelpers2.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-09/assets/modulepreload-polyfill-ec808ebb.js">
+    <link rel="stylesheet" href="/goit-js-hw-09/assets/styles-32a2416c.css">
   </head>
   <body>
     <p><a href="index.html">Go back</a></p>
     <form class="feedback-form" autocomplete="off">
-      <label>
+      <label class="label-field">
         Email
-        <input type="email" name="email" autofocus />
+        <input
+          class="input-field-mail"
+          type="email"
+          name="email"
+          placeholder="Type area"
+          autofocus
+        />
       </label>
-      <label>
+      <label class="label-field">
         Message
-        <textarea name="message" rows="8"></textarea>
+        <textarea
+          class="textarea-field-message"
+          name="message"
+          type="textarea"
+          rows="8"
+        ></textarea>
       </label>
-      <button type="submit">Submit</button>
+      <button class="form-btn" type="submit">Submit</button>
     </form>
     
   </body>
