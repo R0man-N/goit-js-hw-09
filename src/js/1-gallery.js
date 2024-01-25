@@ -69,67 +69,25 @@ const images = [
 
 const galleryContainer = document.querySelector('.gallery');
 
-const createGalleryItemWithTemplate = image => `<li class="gallery-item">
+const createGalleryItemsWithTemplate = images =>
+  images
+    .map(
+      image => `<li class="gallery-item">
   <a class="gallery-link" href="${image.original}">
     <img class="gallery-image" src="${image.preview}" alt="${image.description}" />
   </a>
-</li>
-`;
+</li>`
+    )
+    .join('');
 
 const appendGalleryItems = () => {
-  const galleryHTML = images.map(createGalleryItemWithTemplate).join('');
+  const galleryHTML = createGalleryItemsWithTemplate(images);
   galleryContainer.innerHTML = galleryHTML;
 };
 
 appendGalleryItems();
 
-let gallery = new SimpleLightbox('.gallery a', {
+const gallery = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
-
-// =========== Modal window ===========
-
-let activeLightbox = null;
-
-galleryContainer.addEventListener('click', event => {
-  event.preventDefault();
-
-  const target = event.target;
-
-  if (target.nodeName !== 'IMG') {
-    return;
-  }
-
-  const originalImageURL = target.dataset.source;
-  const altText = target.alt;
-
-  if (!originalImageURL) {
-    return;
-  }
-
-  const lightboxContent = `
-  <img src="${originalImageURL}" alt="${altText}" />
-`;
-
-  const lightboxOptions = {
-    onShow: () => {
-      document.addEventListener('keydown', handleKeyDown);
-    },
-    onClose: () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    },
-  };
-
-  activeLightbox = basicLightbox.create(lightboxContent, lightboxOptions);
-
-  // Open modal window
-  activeLightbox.show();
-});
-
-// To close a modal window when the Escape key is pressed
-const handleKeyDown = event => {
-  if (event.code === 'Escape') {
-    activeLightbox.close();
-  }
-};
